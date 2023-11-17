@@ -10,7 +10,9 @@
         </h2>
 
         <label class="c-pokemon-spin" :for="pokemonData.name">
-          <input class="c-pokemon-spin__input" type="checkbox" :id="pokemonData.name" v-model="showBack" />
+          <input class="c-pokemon-spin__input sr-only" type="checkbox" :id="pokemonData.name" v-model="showBack" />
+
+          <span class="sr-only">Toggle Pokemon from back to front and vice versa.</span>
 
           <RefreshCcw v-if="showBack" class="c-pokemon-spin__icon" />
           <RefreshCw v-else class="c-pokemon-spin__icon" />
@@ -45,7 +47,7 @@ const getPokemonImageUrl = function () {
   if (showBack.value) {
     return `${baseUrl}back/${getPokemonId()}.gif`;
   } else {
-    return `${baseUrl}${getPokemonId()}.gif`;
+    return `${baseUrl}/${getPokemonId()}.gif`;
   }
 };
 </script>
@@ -91,16 +93,12 @@ const getPokemonImageUrl = function () {
     margin-left: 1rem;
     transition: background 0.2s ease-in-out;
     color: #fff;
-    &:focus {
-      background: #fff;
-      color: #000;
+
+    &:focus-within {
+      outline: 3px solid lightcyan;
     }
     &:hover {
       background: #808080;
-    }
-
-    &__input {
-      display: none;
     }
   }
   &__image {
@@ -118,6 +116,18 @@ const getPokemonImageUrl = function () {
     margin: 0 0 0 auto;
     text-decoration: underline;
   }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 @media (min-width: 480px) {
