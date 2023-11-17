@@ -1,14 +1,8 @@
 <template>
   <logo />
 
-  <h1>Pokemon!</h1>
-
   <div>
-    <pokemon v-for="pokemon in pokemons"
-     :pokemonData="pokemon" 
-     :key="pokemon.name"
-     > 
-    </pokemon>
+    <pokemon v-for="pokemon in pokemons" :pokemonData="pokemon" :key="pokemon.name"> </pokemon>
   </div>
 </template>
 
