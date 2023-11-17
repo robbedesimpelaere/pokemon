@@ -1,7 +1,7 @@
 <template>
   <logo />
 
-  <div>
+  <div class="o-grid">
     <pokemon v-for="pokemon in pokemons" :pokemonData="pokemon" :key="pokemon.name"> </pokemon>
   </div>
 </template>
@@ -27,5 +27,15 @@ html {
   color: #fefefe;
   background: #303030;
   font-family: 'Work Sans', sans-serif;
+}
+
+.o-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  max-width: 72rem;
+  gap: 2rem;
+  margin: 0 auto;
+  padding: 2rem;
 }
 </style>
